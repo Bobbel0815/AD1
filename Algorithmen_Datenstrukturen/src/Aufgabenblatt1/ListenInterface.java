@@ -1,7 +1,5 @@
 package Aufgabenblatt1;
 
-import java.util.List;
-
 public interface ListenInterface<T, U> {
 
 	void insert(int pos, T element);
