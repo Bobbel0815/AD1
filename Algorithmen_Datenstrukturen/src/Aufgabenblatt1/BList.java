@@ -62,7 +62,6 @@ public class BList<T, U> implements ListenInterface<T, U> {
 	@Override
 	public void concat(ListenInterface liste) {
 		// TODO Auto-generated method stub
-
 	}
 
 }
