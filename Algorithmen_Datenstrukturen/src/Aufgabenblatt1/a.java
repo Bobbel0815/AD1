@@ -31,15 +31,16 @@ public class a implements ListenInterface{
 		
 	}
 
+	//Return Type geaendert, siehe Interface
 	@Override
-	public Object find(Object key) {
+	public int find(Object key) {
 		
 		for(int i =0;i<array.length;i++){
 			if(key.equals(array[i].getKey())){
 				return i;
 			}
 		}
-		return null;
+		return 0;
 	}
 
 	@Override

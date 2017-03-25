@@ -48,13 +48,15 @@ public class c implements ListenInterface<Object, Object> {
 		currentPerson.setNextPerson(currentPerson.getNextPerson().getNextPerson());
 	}
 
+	//return Type von Object geaendert, da Interface angepasst
 	@Override
-	public Object find(Object key) {
+	public int find(Object key) {
 		int position = 0;
 		currentPerson = Dummy;
 		while (currentPerson.getNextPerson().getKey() != (int) key) {
 			if (currentPerson == DummyStop) {
-				return null;
+				//return Type auf int geaendert und deshalb hier auf 0 und nicht Null
+				return 0;
 			}
 			currentPerson = currentPerson.getNextPerson();
 			position++;
