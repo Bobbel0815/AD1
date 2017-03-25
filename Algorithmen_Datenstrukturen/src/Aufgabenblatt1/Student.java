@@ -14,5 +14,11 @@ public class Student {
 	    	return key;
 	    }
 
+	@Override
+	public String toString() {
+		return "Student [key=" + key + "]";
+	}
+
+	
 
 }
