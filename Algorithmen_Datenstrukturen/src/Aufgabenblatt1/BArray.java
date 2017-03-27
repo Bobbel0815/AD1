@@ -3,8 +3,12 @@ package Aufgabenblatt1;
 public class BArray {
 	BArray next;
 	BArray previous;
-	private int pos;
-	private int key = this.hashCode();
+	private int key;
+	private static int counter = 0;
+
+	public BArray() {
+		key = counter++;
+	}
 
 	public BArray getNext() {
 		return next;
@@ -22,16 +26,16 @@ public class BArray {
 		this.previous = previous;
 	}
 
-	public int getPos() {
-		return pos;
+	public BArray getPos() {
+		return this;
 	}
-	
-	public void setKey(int key2){
-		
+
+	public void setKey(int key2) {
+
 		key = key2;
 	}
-	
-	public int getKey(){
+
+	public int getKey() {
 		return key;
 	}
 

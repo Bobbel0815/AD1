@@ -1,13 +1,13 @@
 package Aufgabenblatt1;
 
-public interface ListenInterface<T, U> {
+public interface ListenInterface<T> {
 	
-	void insert(int pos, T element);
-	void deleteP(int pos);
-	void deleteK(U key);
+	void insert(T pos, T element);
+	void deleteP(T pos);
+	void deleteK(int key);
 	//aenderungsvorschlag mit alter implementierung 
 	// U find(U key);
-	int find(U key);
-	T retrieve(int pos);
-	void concat (ListenInterface liste);
+	T find(int key);
+	T retrieve(T pos);
+	void concat (ListenInterface<T> liste);
 }

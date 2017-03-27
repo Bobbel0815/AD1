@@ -26,7 +26,7 @@ public class A implements ListenInterface {
 	}
 
 	@Override
-	public void deleteP(int pos) {
+	public void deleteP(Object pos) {
 		if (pos >= 0 && pos <= groesse) {
 			array[pos] = null;
 			//System.out.println("Element an Stelle " + pos + " gelöscht.");
@@ -63,7 +63,7 @@ public class A implements ListenInterface {
 			}
 			}
 		}
-		return key;
+		return  key;
 		
 	}
 
