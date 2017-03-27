@@ -1,3 +1,5 @@
+package Aufgabenblatt1;
+
 public class Aufwandsanalyse
 {
 	private static Element _e1 = new Element(-1);

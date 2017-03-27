@@ -1,3 +1,5 @@
+package Aufgabenblatt1;
+
 /**
  * Eine Schnittstelle fuer Listen.
  * 

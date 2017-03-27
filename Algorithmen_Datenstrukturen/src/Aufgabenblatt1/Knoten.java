@@ -1,3 +1,5 @@
+package Aufgabenblatt1;
+
 /**
  * Diese Klasse modelliert doppelt verkettbare Knoten, die jeweils ein Element
  * vom Typ Object enthalten koennen.

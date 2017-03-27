@@ -1,3 +1,4 @@
+package Aufgabenblatt1;
 
 public class Arrayliste implements Liste
 {
