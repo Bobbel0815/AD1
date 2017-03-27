@@ -1,6 +1,7 @@
 /**
  * Eine Schnittstelle fuer Listen.
  * 
+ * Bob von Bopp
  */
 public interface Liste {
 	
