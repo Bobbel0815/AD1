@@ -1,69 +1,58 @@
 package Aufgabenblatt1;
 
-public class DoppeltVerkettet implements Liste
-{
-	private Knoten _knotenliste[];
-	private Knoten _ersterKnoten;
-	private Knoten _letzterKnoten;
+public class DoppeltVerkettet implements Liste {
+	private Knoten knotenliste[];
+	private Knoten dummyStart;
+	private Knoten dummyEnd;
 
-	public DoppeltVerkettet()
-	{
-		_knotenliste = new Knoten[10];
-		_knotenliste[0] = new Knoten(null, null, null);
-		_ersterKnoten = _knotenliste[0];
-		_letzterKnoten = _knotenliste[0];
-		_knotenliste[0].setNachfolger(_ersterKnoten);
-		_knotenliste[0].setVorgaenger(_letzterKnoten);
+	public DoppeltVerkettet() {
+		knotenliste = new Knoten[10];
+		knotenliste[0] = new Knoten(null, null, null);
+		dummyStart = knotenliste[0];
+		dummyEnd = knotenliste[0];
+		knotenliste[0].setNachfolger(dummyStart);
+		knotenliste[0].setVorgaenger(dummyEnd);
 	}
 
-	private Knoten insertFirstKnoten(Element element)
-	{
-		Knoten neuerKnoten = new Knoten(_knotenliste[0], _knotenliste[0], element);
-		_knotenliste[0].setVorgaenger(neuerKnoten);
-		_knotenliste[0].setNachfolger(neuerKnoten);
-		_knotenliste[1] = neuerKnoten;
-		_ersterKnoten = neuerKnoten;
-		_letzterKnoten = neuerKnoten;
+	private Knoten insertFirstKnoten(Element element) {
+		Knoten neuerKnoten = new Knoten(knotenliste[0], knotenliste[0], element);
+		knotenliste[0].setVorgaenger(neuerKnoten);
+		knotenliste[0].setNachfolger(neuerKnoten);
+		knotenliste[1] = neuerKnoten;
+		dummyStart = neuerKnoten;
+		dummyEnd = neuerKnoten;
 		return neuerKnoten;
 	}
 
 	@Override
-	public Knoten insert(Knoten knoten, Element element)
-	{
+	public Knoten insert(Knoten knoten, Element element) {
 		Knoten erstellterKnoten = null;
-		if(this.size() == 0 && knoten == null)
-		{
+		// this.size == 0 bedeutet liste noch leer also neues Element an den
+		// Anfang einfuegen
+		if (this.size() == 0 && knoten == null) {
 			erstellterKnoten = insertFirstKnoten(element);
-		}
-		else if(this.size() > 0 && knoten != null)
-		{
-			Knoten durchlaufKnoten = _letzterKnoten;
-			while(durchlaufKnoten != _knotenliste[0])
-			{
-				if(knoten.equals(durchlaufKnoten))
-				{
+		} else if (this.size() > 0 && knoten != null) {
+			Knoten durchlaufKnoten = dummyEnd;
+			while (durchlaufKnoten != knotenliste[0]) {
+				if (knoten.equals(durchlaufKnoten)) {
 					Knoten neuerKnoten = new Knoten(durchlaufKnoten.getVorgaenger(), durchlaufKnoten, element);
 					durchlaufKnoten.getVorgaenger().setNachfolger(neuerKnoten);
 					durchlaufKnoten.setVorgaenger(neuerKnoten);
 					erstellterKnoten = neuerKnoten;
-					for(int i = 1; i <= _knotenliste.length; i++)
-					{
-						if(i < _knotenliste.length && _knotenliste[i] == null)
-						{
-							_knotenliste[i] = neuerKnoten;
+					for (int i = 1; i <= knotenliste.length; i++) {
+						if (i < knotenliste.length && knotenliste[i] == null) {
+							knotenliste[i] = neuerKnoten;
 							break;
 						}
-						if(i == _knotenliste.length)
-						{
+						if (i == knotenliste.length) {
 							vergroesserArray();
-							_knotenliste[i] = neuerKnoten;
+							knotenliste[i] = neuerKnoten;
 							break;
 						}
 					}
-					if(durchlaufKnoten.equals(_ersterKnoten))
-					{
-						_ersterKnoten = neuerKnoten;
-						_knotenliste[0].setNachfolger(_ersterKnoten);
+					if (durchlaufKnoten.equals(dummyStart)) {
+						dummyStart = neuerKnoten;
+						knotenliste[0].setNachfolger(dummyStart);
 					}
 					break;
 				}
@@ -73,60 +62,45 @@ public class DoppeltVerkettet implements Liste
 		return erstellterKnoten;
 	}
 
-	private void vergroesserArray()
-	{
-		Knoten tempknotenliste[] = new Knoten[_knotenliste.length * 2];
-		for(int i = 0; i < _knotenliste.length; i++)
-		{
-			tempknotenliste[i] = _knotenliste[i];
+	private void vergroesserArray() {
+		Knoten tempknotenliste[] = new Knoten[knotenliste.length * 2];
+		for (int i = 0; i < knotenliste.length; i++) {
+			tempknotenliste[i] = knotenliste[i];
 		}
-		_knotenliste = tempknotenliste;
+		knotenliste = tempknotenliste;
 	}
 
 	@Override
-	public boolean delete(Knoten knoten)
-	{
+	public boolean delete(Knoten knoten) {
 		boolean result = false;
 
-		if(knoten != null)
-		{
-			Knoten durchlaufKnoten = _knotenliste[0];
-			while(durchlaufKnoten.getNachfolger() != _knotenliste[0])
-			{
-				if(knoten.equals(durchlaufKnoten.getNachfolger()))
-				{
+		if (knoten != null) {
+			Knoten durchlaufKnoten = knotenliste[0];
+			while (durchlaufKnoten.getNachfolger() != knotenliste[0]) {
+				if (knoten.equals(durchlaufKnoten.getNachfolger())) {
 					result = true;
-					for(int i = 1; i < _knotenliste.length; i++)
-					{
-						if(_knotenliste[i] != null && _knotenliste[i].equals(durchlaufKnoten.getNachfolger()))
-						{
-							_knotenliste[i] = null;
+					for (int i = 1; i < knotenliste.length; i++) {
+						if (knotenliste[i] != null && knotenliste[i].equals(durchlaufKnoten.getNachfolger())) {
+							knotenliste[i] = null;
 							break;
 						}
 					}
-					if(durchlaufKnoten.getNachfolger().equals(_letzterKnoten)
-					        && durchlaufKnoten.getNachfolger().equals(_ersterKnoten))
-					{
-						_ersterKnoten = _knotenliste[0];
-						_letzterKnoten = _knotenliste[0];
-						_knotenliste[0].setNachfolger(_ersterKnoten);
-						_knotenliste[0].setVorgaenger(_letzterKnoten);
-					}
-					else if(durchlaufKnoten.getNachfolger().equals(_letzterKnoten))
-					{
-						_letzterKnoten = durchlaufKnoten;
-						_letzterKnoten.setNachfolger(_knotenliste[0]);
-						_knotenliste[0].setVorgaenger(_letzterKnoten);
-					}
-					else if(durchlaufKnoten.getNachfolger().equals(_ersterKnoten))
-					{
-						_ersterKnoten = durchlaufKnoten.getNachfolger().getNachfolger();
-						_knotenliste[0].setNachfolger(_ersterKnoten);
+					if (durchlaufKnoten.getNachfolger().equals(dummyEnd)
+							&& durchlaufKnoten.getNachfolger().equals(dummyStart)) {
+						dummyStart = knotenliste[0];
+						dummyEnd = knotenliste[0];
+						knotenliste[0].setNachfolger(dummyStart);
+						knotenliste[0].setVorgaenger(dummyEnd);
+					} else if (durchlaufKnoten.getNachfolger().equals(dummyEnd)) {
+						dummyEnd = durchlaufKnoten;
+						dummyEnd.setNachfolger(knotenliste[0]);
+						knotenliste[0].setVorgaenger(dummyEnd);
+					} else if (durchlaufKnoten.getNachfolger().equals(dummyStart)) {
+						dummyStart = durchlaufKnoten.getNachfolger().getNachfolger();
+						knotenliste[0].setNachfolger(dummyStart);
 						durchlaufKnoten.getNachfolger().getNachfolger().setVorgaenger(durchlaufKnoten);
 						durchlaufKnoten.setNachfolger(durchlaufKnoten.getNachfolger().getNachfolger());
-					}
-					else
-					{
+					} else {
 						durchlaufKnoten.getNachfolger().getNachfolger().setVorgaenger(durchlaufKnoten);
 						durchlaufKnoten.setNachfolger(durchlaufKnoten.getNachfolger().getNachfolger());
 					}
@@ -139,107 +113,86 @@ public class DoppeltVerkettet implements Liste
 	}
 
 	@Override
-	public Knoten find(Element element)
-	{
+	public Knoten find(Element element) {
 		Knoten result = null;
-		_knotenliste[0].setElement(element);
-		Knoten durchlaufKnoten = _letzterKnoten;
-		while(durchlaufKnoten.getElement() != element)
-		{
+		knotenliste[0].setElement(element);
+		Knoten durchlaufKnoten = dummyEnd;
+		while (durchlaufKnoten.getElement() != element) {
 			durchlaufKnoten = durchlaufKnoten.getVorgaenger();
 		}
-		if(durchlaufKnoten.equals(_ersterKnoten.getVorgaenger()))
-		{
+		if (durchlaufKnoten.equals(dummyStart.getVorgaenger())) {
 			result = null;
-		}
-		else
-		{
+		} else {
 			result = durchlaufKnoten;
 		}
-		_knotenliste[0].setElement(null);
+		knotenliste[0].setElement(null);
 		return result;
 	}
 
 	@Override
-	public Element retrieve(Knoten knoten)
-	{
+	public Element retrieve(Knoten knoten) {
 		Element result = null;
-		Knoten durchlaufKnoten = _letzterKnoten;
+		Knoten durchlaufKnoten = dummyEnd;
 		int groesse = this.size();
-		while(!durchlaufKnoten.equals(knoten) && groesse > 0)
-		{
+		while (!durchlaufKnoten.equals(knoten) && groesse > 0) {
 			durchlaufKnoten = durchlaufKnoten.getVorgaenger();
 			groesse--;
 		}
-		if(durchlaufKnoten.equals(knoten) && groesse > 0)
-		{
+		if (durchlaufKnoten.equals(knoten) && groesse > 0) {
 			result = durchlaufKnoten.getElement();
-		}
-		else
-		{
+		} else {
 			result = null;
 		}
 		return result;
 	}
 
 	@Override
-	public boolean concat(Liste liste)
-	{
+	public boolean concat(Liste liste) {
 		boolean result = false;
-		if(liste instanceof DoppeltVerkettet)
-		{
+		if (liste instanceof DoppeltVerkettet) {
 			DoppeltVerkettet zweiteListe = (DoppeltVerkettet) liste;
-			if(this.size() > 0 && zweiteListe.size() > 0)
-			{
+			if (this.size() > 0 && zweiteListe.size() > 0) {
 				result = true;
 
 				Knoten tempknotenliste[] = new Knoten[(this.size() + zweiteListe.size()) * 2];
 
-				_letzterKnoten.setNachfolger(zweiteListe._ersterKnoten);
-				zweiteListe._ersterKnoten.setVorgaenger(_letzterKnoten);
-				_letzterKnoten = zweiteListe._letzterKnoten;
+				dummyEnd.setNachfolger(zweiteListe.dummyStart);
+				zweiteListe.dummyStart.setVorgaenger(dummyEnd);
+				dummyEnd = zweiteListe.dummyEnd;
 
 				int stelle = 0;
-				for(int i = 0; i < _knotenliste.length; i++)
-				{
-					if(_knotenliste[i] != null)
-					{
-						tempknotenliste[stelle] = _knotenliste[i];
+				for (int i = 0; i < knotenliste.length; i++) {
+					if (knotenliste[i] != null) {
+						tempknotenliste[stelle] = knotenliste[i];
 						stelle++;
 					}
 				}
 
-				for(int j = 1; j < zweiteListe._knotenliste.length; j++)
-				{
-					if(zweiteListe._knotenliste[j] != null)
-					{
-						tempknotenliste[stelle] = zweiteListe._knotenliste[j];
+				for (int j = 1; j < zweiteListe.knotenliste.length; j++) {
+					if (zweiteListe.knotenliste[j] != null) {
+						tempknotenliste[stelle] = zweiteListe.knotenliste[j];
 						stelle++;
 					}
 				}
-				_knotenliste = tempknotenliste;
-				_knotenliste[0].setVorgaenger(_letzterKnoten);
-				_letzterKnoten.setNachfolger(_knotenliste[0]);
-			}
-			else if(this.size() == 0 && zweiteListe.size() > 0)
-			{
+				knotenliste = tempknotenliste;
+				knotenliste[0].setVorgaenger(dummyEnd);
+				dummyEnd.setNachfolger(knotenliste[0]);
+			} else if (this.size() == 0 && zweiteListe.size() > 0) {
 				result = true;
 
-				_knotenliste = zweiteListe._knotenliste;
-				_ersterKnoten = zweiteListe._ersterKnoten;
-				_letzterKnoten = zweiteListe._letzterKnoten;
+				knotenliste = zweiteListe.knotenliste;
+				dummyStart = zweiteListe.dummyStart;
+				dummyEnd = zweiteListe.dummyEnd;
 			}
 		}
 		return result;
 	}
 
 	@Override
-	public int size()
-	{
+	public int size() {
 		int anzahl = 0;
-		Knoten durchlaufKnoten = _letzterKnoten;
-		while(durchlaufKnoten != _knotenliste[0])
-		{
+		Knoten durchlaufKnoten = dummyEnd;
+		while (durchlaufKnoten != knotenliste[0]) {
 			anzahl++;
 			durchlaufKnoten = durchlaufKnoten.getVorgaenger();
 		}

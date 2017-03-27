@@ -11,55 +11,47 @@ public class Knoten {
 	Knoten vorgaenger;
 	Knoten nachfolger;
 	Element element;
-	
-    /**
-     * Erzeugt einen neuen Knoten ohne Element, Vorgaenger und Nachfolger.
-     */
-	public Knoten()
-	{		
+
+	/**
+	 * Erzeugt einen neuen Knoten ohne Element, Vorgaenger und Nachfolger.
+	 */
+	public Knoten() {
 	}
-	
-    /**
-     * Erzeugt einen neuen Knoten und setzt Element, Vorgaenger und Nachfolger.
+
+	/**
+	 * Erzeugt einen neuen Knoten und setzt Element, Vorgaenger und Nachfolger.
+	 * 
 	 * @param vorgaenger
 	 * @param nachfolger
 	 * @param element
 	 */
-	public Knoten(Knoten vorgaenger, Knoten nachfolger, Element element)
-	{
+	public Knoten(Knoten vorgaenger, Knoten nachfolger, Element element) {
 		this.vorgaenger = vorgaenger;
 		this.nachfolger = nachfolger;
 		this.element = element;
-	}	
-	
-	
-	public void setVorgaenger(Knoten vorgaenger)
-	{
+	}
+
+	public void setVorgaenger(Knoten vorgaenger) {
 		this.vorgaenger = vorgaenger;
 	}
-	
-	public void setNachfolger(Knoten nachfolger)
-	{
+
+	public void setNachfolger(Knoten nachfolger) {
 		this.nachfolger = nachfolger;
 	}
-	
-	public void setElement(Element element)
-	{
+
+	public void setElement(Element element) {
 		this.element = element;
 	}
-	
-	public Knoten getVorgaenger()
-	{
+
+	public Knoten getVorgaenger() {
 		return vorgaenger;
 	}
-	
-	public Knoten getNachfolger()
-	{
+
+	public Knoten getNachfolger() {
 		return nachfolger;
 	}
-	
-	public Element getElement()
-	{
+
+	public Element getElement() {
 		return element;
 	}
 
@@ -75,35 +67,27 @@ public class Knoten {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-		{
+		if (this == obj) {
 			return true;
 		}
-		if (obj == null)
-		{
+		if (obj == null) {
 			return false;
 		}
-		if (getClass() != obj.getClass())
-		{
+		if (getClass() != obj.getClass()) {
 			return false;
 		}
-		
+
 		Knoten other = (Knoten) obj;
-		
+
 		boolean elementBool;
-		if(element != null && other.element != null)
-		{
+		if (element != null && other.element != null) {
 			elementBool = element.equals(other.element);
-		}
-		else if(element == null && other.element == null)
-		{
+		} else if (element == null && other.element == null) {
 			elementBool = true;
-		}
-		else
-		{
+		} else {
 			elementBool = false;
 		}
-		
-		return elementBool && (vorgaenger == other.vorgaenger) && (_nachfolger == other.nachfolger);
-	}	
+
+		return elementBool && (vorgaenger == other.vorgaenger) && (nachfolger == other.nachfolger);
+	}
 }
