@@ -1,7 +1,6 @@
 /**
  * Eine Schnittstelle fuer Listen.
  * 
- * @author Dennis Schroeder1
  */
 public interface Liste {
 	
@@ -10,9 +9,9 @@ public interface Liste {
 	 * Ein Aufruf bei dem der Parameter 'knoten' null ist, 
 	 * fuehrt bei leerer Liste zum einfuegen an erster Stelle.
 	 * 
-	 * @param knoten vor dem eingefügt werden soll
-	 * @param element das einzufügende Element 
-	 * @return der Knoten der in die liste eingefügt und mit dem Element verknüpf wurde.
+	 * @param knoten vor dem eingefÃ¼gt werden soll
+	 * @param element das einzufÃ¼gende Element 
+	 * @return der Knoten der in die liste eingefÃ¼gt und mit dem Element verknÃ¼pf wurde.
 	 * 			Null bedeutet keine Knoten erstellt element wurde nicht aufgenommen.
 	 * 
 	 * 
@@ -29,8 +28,8 @@ public interface Liste {
 	/**
 	 * Loescht den Knoten aus der Liste.
 	 * 
-	 * @param knoten der Knoten der gelöscht werden soll
-	 * @return ob der Knoten gelöscht wurde
+	 * @param knoten der Knoten der gelÃ¶scht werden soll
+	 * @return ob der Knoten gelÃ¶scht wurde
 	 * 
 	 * @ensure retrieve(knoten) == null Knoten ist nicht in der Liste.
 	 */
@@ -63,13 +62,13 @@ public interface Liste {
 	/**
 	 * Konkatiniert die gegebene(Liste vom eigenen Typ) mit der aktuellen Liste.
 	 * 
-	 * @param liste die liste die angefügt werden soll
+	 * @param liste die liste die angefÃ¼gt werden soll
 	 * @return ob das verbinden erfolgreich war
 	 * 
 	 * @require liste != Null
 	 * @require this instanceof liste (die beiden sind vom gleichen typ
 	 * 
-	 * @ensure die zweite liste wurde an die erste angehängt
+	 * @ensure die zweite liste wurde an die erste angehÃ¤ngt
 	 */
 	boolean concat(Liste liste);
 	
