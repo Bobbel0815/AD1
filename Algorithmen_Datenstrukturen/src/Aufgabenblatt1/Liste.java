@@ -1,6 +1,6 @@
 package Aufgabenblatt1;
 
-public interface ListenInterface<T> {
+public interface Liste<T> {
 	
 	void insert(T pos, T element);
 	void deleteP(T pos);
@@ -9,5 +9,5 @@ public interface ListenInterface<T> {
 	// U find(U key);
 	T find(int key);
 	T retrieve(T pos);
-	void concat (ListenInterface<T> liste);
+	void concat (Liste<T> liste);
 }
