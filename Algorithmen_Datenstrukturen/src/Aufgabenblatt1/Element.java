@@ -1,34 +1,34 @@
 package Aufgabenblatt1;
 
-public class Element{
+public class Element {
 	int key;
-	
-	public Element() 
-	{
-		key = (int) (Math.random()*1_000_000);
+
+	public Element() {
+		Aufwand.counter++;
+		key = (int) (Math.random() * 1_000_000);
 	}
-	
-	public Element(int nummer)
-	{
-		this.key = key;
+
+	public Element(int nummer) {
+		Aufwand.counter++;
+		key = nummer;
 	}
 
 	@Override
-	public String toString() 
-	{
+	public String toString() {
+		Aufwand.counter++;
 		return "[" + key + "]";
 	}
-	
+
 	@Override
-	public int hashCode() 
-	{
+	public int hashCode() {
+		Aufwand.counter++;
 		return key;
-	}	
-	
+	}
+
 	@Override
-	public boolean equals(Object obj) 
-	{
-		
+	public boolean equals(Object obj) {
+		Aufwand.counter++;
+
 		if (this == obj)
 			return true;
 		if (obj == null)
@@ -36,9 +36,9 @@ public class Element{
 		if (getClass() != obj.getClass())
 			return false;
 		Element other = (Element) obj;
-		
+
 		return key == other.key;
-			
+
 	}
 
 }

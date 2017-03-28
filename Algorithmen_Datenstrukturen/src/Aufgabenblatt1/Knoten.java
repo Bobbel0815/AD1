@@ -16,6 +16,7 @@ public class Knoten {
 	 * Erzeugt einen neuen Knoten ohne Element, Vorgaenger und Nachfolger.
 	 */
 	public Knoten() {
+		Aufwand.counter++;
 	}
 
 	/**
@@ -26,37 +27,45 @@ public class Knoten {
 	 * @param element
 	 */
 	public Knoten(Knoten vorgaenger, Knoten nachfolger, Element element) {
+		Aufwand.counter++;
 		this.vorgaenger = vorgaenger;
 		this.nachfolger = nachfolger;
 		this.element = element;
 	}
 
 	public void setVorgaenger(Knoten vorgaenger) {
+		Aufwand.counter++;
 		this.vorgaenger = vorgaenger;
 	}
 
 	public void setNachfolger(Knoten nachfolger) {
+		Aufwand.counter++;
 		this.nachfolger = nachfolger;
 	}
 
 	public void setElement(Element element) {
+		Aufwand.counter++;
 		this.element = element;
 	}
 
 	public Knoten getVorgaenger() {
+		Aufwand.counter++;
 		return vorgaenger;
 	}
 
 	public Knoten getNachfolger() {
+		Aufwand.counter++;
 		return nachfolger;
 	}
 
 	public Element getElement() {
+		Aufwand.counter++;
 		return element;
 	}
 
 	@Override
 	public int hashCode() {
+		Aufwand.counter++;
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((element == null) ? 0 : element.hashCode());
@@ -67,6 +76,7 @@ public class Knoten {
 
 	@Override
 	public boolean equals(Object obj) {
+		Aufwand.counter++;
 		if (this == obj) {
 			return true;
 		}

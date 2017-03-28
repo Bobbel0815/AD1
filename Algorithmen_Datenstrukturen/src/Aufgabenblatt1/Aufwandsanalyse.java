@@ -13,7 +13,7 @@ public class Aufwandsanalyse {
 	public static void insert() {
 		initialisiere(new Arrayliste(), new Arrayliste(), 1);
 		initialisiere(new DoppeltVerkettet(), new DoppeltVerkettet(), 2);
-		initialisiere(new Implementierung03(), new Implementierung03(), 3);
+		initialisiere(new EinfachVerkettet(), new EinfachVerkettet(), 3);
 	}
 
 	private static void analysiere(Liste liste, Liste liste2, Knoten anfang, Knoten mitte, Knoten ende) {
@@ -162,8 +162,8 @@ public class Aufwandsanalyse {
 				liste = new DoppeltVerkettet();
 				liste2 = new DoppeltVerkettet();
 			} else if (listennummer == 3) {
-				liste = new Implementierung03();
-				liste2 = new Implementierung03();
+				liste = new EinfachVerkettet();
+				liste2 = new EinfachVerkettet();
 			}
 		}
 
