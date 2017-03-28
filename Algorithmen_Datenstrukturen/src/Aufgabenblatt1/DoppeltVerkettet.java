@@ -15,9 +15,11 @@ public class DoppeltVerkettet implements Liste {
 	}
 	
 	public Knoten getHead(){
+		counter++;
 		return head;
 	}
 	public Knoten getTail(){
+		counter++;
 		return tail;
 	}
 	public void Clear(){
@@ -36,19 +38,17 @@ public class DoppeltVerkettet implements Liste {
 
 	@Override
 	public Knoten insert(Knoten pos, Element element) {
-		
+		counter++;
 		if(pos == null || pos == tail || pos == head){
 			throw new IndexOutOfBoundsException();
 		}
-		
-		counter+=2;
+
 		if(pos.getVorgaenger() != null){
-			Knoten tmp = new Knoten(pos.getNachfolger(),pos,pos.getElement());
+			Knoten tmp = new Knoten(pos,pos.getNachfolger(),pos.getElement());
 			tmp.getNachfolger().setVorgaenger(tmp);
 			pos.setNachfolger(tmp);
 			pos.setElement(element);
 			listenLaenge++;
-			counter+=9;
 		}
 		else{
 			pos.setElement(element);
@@ -57,14 +57,13 @@ public class DoppeltVerkettet implements Liste {
 			tail.getVorgaenger().setNachfolger(pos);
 			tail.setVorgaenger(pos);
 			listenLaenge++;
-			counter+=8;
 		}
 		return pos;
 	}
 
 	@Override
 	public boolean delete(Knoten pos) {
-		counter+=5;
+		counter++;
 		if(pos == null || pos == tail || pos == head || pos.getElement() == null){
 			throw new IndexOutOfBoundsException();
 		}
@@ -80,6 +79,7 @@ public class DoppeltVerkettet implements Liste {
 
 	@Override
 	public Knoten find(Element key) {
+		counter++;
 		Knoten tmp = head.getNachfolger();
 		tail.setElement(key);
 		
@@ -94,7 +94,6 @@ public class DoppeltVerkettet implements Liste {
 
 	@Override
 	public Element retrieve(Knoten pos) {
-		counter+=3;
 		if(pos == null || pos == tail || pos == head){
 			throw new IndexOutOfBoundsException();
 		}
@@ -104,6 +103,7 @@ public class DoppeltVerkettet implements Liste {
 
 	@Override
 	public boolean concat(Liste liste2) {
+		counter++;
 		if(liste2 instanceof DoppeltVerkettet){
 			DoppeltVerkettet tmp = (DoppeltVerkettet)liste2;
 			tail.getVorgaenger().setNachfolger(tmp.getHead().getNachfolger());
@@ -117,6 +117,7 @@ public class DoppeltVerkettet implements Liste {
 
 	@Override
 	public int size() {
+		counter++;
 		return listenLaenge;
 	}	
 	

@@ -60,7 +60,7 @@ public class Aufwandsanalyse {
 			System.out.println("Aufwand Insert: \t" + counter + " Operationen.");
 			Aufwandsanalyse.counter = 0;
 
-			liste1.find(liste1.getTail().getNachfolger().getElement());
+			liste1.find(liste1.getTail().getVorgaenger().getElement());
 			System.out.println("Aufwand Finden: \t" + counter + " Operationen.");
 			Aufwandsanalyse.counter = 0;
 
