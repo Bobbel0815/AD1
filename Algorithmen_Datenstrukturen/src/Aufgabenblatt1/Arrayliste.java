@@ -10,14 +10,14 @@ public class Arrayliste implements Liste {
 	}
 
 	public Arrayliste(int groesse) {
-		Aufwand.counter++;
+		Aufwandsanalyse.counter++;
 		gesammtindex = 0;
 		this.groesse = groesse;
 		array = new Knoten[groesse];
 	}
 
 	public Knoten[] getArray() {
-		Aufwand.counter++;
+		Aufwandsanalyse.counter++;
 		return array;
 	}
 
@@ -27,7 +27,7 @@ public class Arrayliste implements Liste {
 	 */
 	@Override
 	public Knoten insert(Knoten knoten, Element element) {
-		Aufwand.counter++;
+		Aufwandsanalyse.counter++;
 		Knoten result = null;
 		if (element != null) {
 			if (gesammtindex + 1 >= groesse) // es ist nicht genug platz =>
@@ -65,7 +65,7 @@ public class Arrayliste implements Liste {
 	 */
 	@Override
 	public boolean delete(Knoten knoten) {
-		Aufwand.counter++;
+		Aufwandsanalyse.counter++;
 		boolean result = false;
 		int index = findeindex(knoten);
 		if (index > 0) {
@@ -81,12 +81,12 @@ public class Arrayliste implements Liste {
 	 */
 	@Override
 	public Knoten find(Element element) {
-		Aufwand.counter++;
+		Aufwandsanalyse.counter++;
 		for (int i = gesammtindex; i > 0; i--) {
 			if (array[i].getElement() == element) {
-				Aufwand.counter++;
+				Aufwandsanalyse.counter++;
 				return array[i];
-			}Aufwand.counter++;
+			}Aufwandsanalyse.counter++;
 		}
 		return null;
 	}
@@ -96,7 +96,7 @@ public class Arrayliste implements Liste {
 	 */
 	@Override
 	public Element retrieve(Knoten knoten) {
-		Aufwand.counter++;
+		Aufwandsanalyse.counter++;
 		int index = findeindex(knoten);
 		if (index != 0) {
 			return array[index].getElement();
@@ -110,7 +110,7 @@ public class Arrayliste implements Liste {
 	 */
 	@Override
 	public boolean concat(Liste liste) {
-		Aufwand.counter++;
+		Aufwandsanalyse.counter++;
 		boolean result = false;
 		if (liste instanceof Arrayliste) {
 			Arrayliste arrayliste = (Arrayliste) liste;
@@ -123,7 +123,7 @@ public class Arrayliste implements Liste {
 			for (int i = 1; i <= arrayliste.size(); i++) {
 				array[gesammtindex + 1] = arrayliste.array[i];
 				gesammtindex++;
-				Aufwand.counter++;
+				Aufwandsanalyse.counter++;
 			}
 			result = true;
 
@@ -136,19 +136,19 @@ public class Arrayliste implements Liste {
 	 */
 	@Override
 	public int size() {
-		Aufwand.counter++;
+		Aufwandsanalyse.counter++;
 		return gesammtindex;
 	}
 
 	protected int listenlaenge() {
-		Aufwand.counter++;
+		Aufwandsanalyse.counter++;
 		return groesse;
 	}
 
 	private int findeindex(Knoten knoten) {
-		Aufwand.counter++;
+		Aufwandsanalyse.counter++;
 		for (int i = gesammtindex; i > 0; i--) {
-			Aufwand.counter++;
+			Aufwandsanalyse.counter++;
 			if (array[i] == knoten) {
 				return i;
 			}
@@ -159,10 +159,10 @@ public class Arrayliste implements Liste {
 
 	// knoten an position index rutsch auf index+1 usw.
 	private void nachhintenschieben(int index) {
-		Aufwand.counter++;
+		Aufwandsanalyse.counter++;
 		for (int i = gesammtindex; i >= index; i--) {
 			array[i + 1] = array[i];
-			Aufwand.counter++;
+			Aufwandsanalyse.counter++;
 		}
 		gesammtindex++;
 	}
@@ -171,12 +171,12 @@ public class Arrayliste implements Liste {
 	private void nachvorneschieben(int index) {
 		for (int i = index; i < gesammtindex; i++) {
 			array[index] = array[index + 1];
-			Aufwand.counter++;
+			Aufwandsanalyse.counter++;
 		}
 	}
 
 	private void arrayerweitern(int multipler) {
-		Aufwand.counter++;
+		Aufwandsanalyse.counter++;
 		// Array sichern
 		Knoten[] temparray = array;
 		int tempindex = gesammtindex;
@@ -188,7 +188,7 @@ public class Arrayliste implements Liste {
 		for (int i = gesammtindex; i < tempindex; i++) {
 			array[gesammtindex + 1] = temparray[gesammtindex + 1];
 			gesammtindex++;
-			Aufwand.counter++;
+			Aufwandsanalyse.counter++;
 		}
 	}
 }

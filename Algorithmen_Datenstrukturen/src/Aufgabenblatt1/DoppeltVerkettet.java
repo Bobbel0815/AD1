@@ -22,14 +22,14 @@ public class DoppeltVerkettet implements Liste {
 	}
 	public void Clear(){
 		head = new Knoten(null,null,null);
-		tail = new Knoten(null,head,null);
+		tail = new Knoten(head,null,null);
 		head.setNachfolger(tail);
 		listenLaenge = 0;
 	}
 	
 	public DoppeltVerkettet(){
 		head = new Knoten(null,null,null);
-		tail = new Knoten(null,head,null);
+		tail = new Knoten(head,null,null);
 		head.setNachfolger(tail);
 		listenLaenge = 0;
 	}
@@ -37,7 +37,7 @@ public class DoppeltVerkettet implements Liste {
 	@Override
 	public Knoten insert(Knoten pos, Element element) {
 		
-		if(pos == null || pos == tail || find(element) != null|| pos == head){
+		if(pos == null || pos == tail || pos == head){
 			throw new IndexOutOfBoundsException();
 		}
 		
@@ -113,11 +113,6 @@ public class DoppeltVerkettet implements Liste {
 			tmp.Clear();
 		}
 		return true;
-	}
-	
-	public Knoten getDummyEnd(){
-		Aufwand.counter++;
-		return dummyEnd;
 	}
 
 	@Override

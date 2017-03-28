@@ -1,48 +1,35 @@
 package Aufgabenblatt1;
 
-<<<<<<< HEAD
-public class Element{
-	private int key;
-	
-	public Element() 
-	{
-		key = (int) (Math.random()*1_000_000);
-=======
 public class Element {
 	int key;
 
 	public Element() {
-		Aufwand.counter++;
+		Aufwandsanalyse.counter++;
 		key = (int) (Math.random() * 1_000_000);
->>>>>>> branch 'master' of https://github.com/Bobbel0815/AD1.git
+
 	}
-<<<<<<< HEAD
-	
-	public Element(int nummer)
-	{
-=======
+
 
 	public Element(int nummer) {
-		Aufwand.counter++;
->>>>>>> branch 'master' of https://github.com/Bobbel0815/AD1.git
+		Aufwandsanalyse.counter++;
 		key = nummer;
 	}
 
 	@Override
 	public String toString() {
-		Aufwand.counter++;
+		Aufwandsanalyse.counter++;
 		return "[" + key + "]";
 	}
 
 	@Override
 	public int hashCode() {
-		Aufwand.counter++;
+		Aufwandsanalyse.counter++;
 		return key;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		Aufwand.counter++;
+		Aufwandsanalyse.counter++;
 
 		if (this == obj)
 			return true;

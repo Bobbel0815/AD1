@@ -6,7 +6,7 @@ public class EinfachVerkettet implements Liste {
 	int laenge;
 
 	public EinfachVerkettet() {
-		Aufwand.counter++;
+		Aufwandsanalyse.counter++;
 		head = new Knoten(null, tail, null);
 		tail = new Knoten(null, head, null);
 		head.setNachfolger(tail);
@@ -15,7 +15,7 @@ public class EinfachVerkettet implements Liste {
 
 	@Override
 	public Knoten insert(Knoten knoten, Element element) {
-		Aufwand.counter++;
+		Aufwandsanalyse.counter++;
 		Knoten q;
 		Knoten durchlaufKnoten = head;
 		if (tail.getNachfolger() == head && knoten == null) {
@@ -47,7 +47,7 @@ public class EinfachVerkettet implements Liste {
 
 	@Override
 	public boolean delete(Knoten knoten) {
-		Aufwand.counter++;
+		Aufwandsanalyse.counter++;
 		boolean result = false;
 		Knoten durchlaufKnoten = head;
 		if (head.getNachfolger() != tail) {
@@ -69,7 +69,7 @@ public class EinfachVerkettet implements Liste {
 
 	@Override
 	public Knoten find(Element element) {
-		Aufwand.counter++;
+		Aufwandsanalyse.counter++;
 		tail.setElement(element);
 		Knoten posVor;
 		Knoten pos = head;
@@ -83,13 +83,13 @@ public class EinfachVerkettet implements Liste {
 
 	@Override
 	public Element retrieve(Knoten knoten) {
-		Aufwand.counter++;
+		Aufwandsanalyse.counter++;
 		return knoten.getNachfolger().getElement();
 	}
 
 	@Override
 	public boolean concat(Liste liste) {
-		Aufwand.counter++;
+		Aufwandsanalyse.counter++;
 		boolean result = false;
 		if (liste != null) {
 			EinfachVerkettet tempListe = (EinfachVerkettet) liste;
@@ -107,17 +107,17 @@ public class EinfachVerkettet implements Liste {
 
 	@Override
 	public int size() {
-		Aufwand.counter++;
+		Aufwandsanalyse.counter++;
 		return laenge;
 	}
 
 	public Knoten getHead() {
-		Aufwand.counter++;
+		Aufwandsanalyse.counter++;
 		return head;
 	}
 
 	public Knoten getTail() {
-		Aufwand.counter++;
+		Aufwandsanalyse.counter++;
 		return tail;
 	}
 
