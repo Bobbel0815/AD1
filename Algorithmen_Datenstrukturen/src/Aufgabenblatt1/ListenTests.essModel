@@ -1,0 +1,50 @@
+[Box: ::Aufgabenblatt1 - ::Aufgabenblatt1::Arrayliste]
+X=687
+Y=40
+
+[Box: ::Aufgabenblatt1 - ::Aufgabenblatt1::ArraylisteTest]
+X=20
+Y=486
+
+[Box: ::Aufgabenblatt1 - ::Aufgabenblatt1::Aufwandsanalyse]
+X=430
+Y=486
+
+[Box: ::Aufgabenblatt1 - ::Aufgabenblatt1::DoppeltVerkettet]
+X=892
+Y=40
+
+[Box: ::Aufgabenblatt1 - ::Aufgabenblatt1::Element]
+X=225
+Y=486
+
+[Box: ::Aufgabenblatt1 - ::Aufgabenblatt1::ElementTest]
+X=635
+Y=486
+
+[Box: ::Aufgabenblatt1 - ::Aufgabenblatt1::Implementierung03]
+X=482
+Y=40
+
+[Box: ::Aufgabenblatt1 - ::Aufgabenblatt1::Knoten]
+X=1302
+Y=40
+
+[Box: ::Aufgabenblatt1 - ::Aufgabenblatt1::KnotenTest]
+X=1097
+Y=40
+
+[Box: ::Aufgabenblatt1 - ::Aufgabenblatt1::Liste]
+X=840
+Y=486
+
+[Box: ::Aufgabenblatt1 - ::Aufgabenblatt1::ListenTests]
+X=1507
+Y=40
+
+[Diagram: ::Aufgabenblatt1]
+OffsetX=0
+OffsetY=41
+Visibility=0
+ShowAssoc=1
+

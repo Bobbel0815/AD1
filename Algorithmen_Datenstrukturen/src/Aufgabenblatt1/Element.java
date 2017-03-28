@@ -1,7 +1,7 @@
 package Aufgabenblatt1;
 
 public class Element{
-	int key;
+	private int key;
 	
 	public Element() 
 	{
@@ -10,7 +10,7 @@ public class Element{
 	
 	public Element(int nummer)
 	{
-		this.key = key;
+		key = nummer;
 	}
 
 	@Override
@@ -39,6 +39,10 @@ public class Element{
 		
 		return key == other.key;
 			
+	}
+	
+	public int getKey(){
+		return key;
 	}
 
 }
