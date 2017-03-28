@@ -1,13 +1,12 @@
 package Aufgabenblatt1;
 
-public class Implementierung03 implements Liste
-{
+public class EinfachVerkettet implements Liste {
 	Knoten head;
 	Knoten tail;
 	int laenge;
 
-	public Implementierung03()
-	{
+	public EinfachVerkettet() {
+		Aufwand.counter++;
 		head = new Knoten(null, tail, null);
 		tail = new Knoten(null, head, null);
 		head.setNachfolger(tail);
@@ -15,29 +14,22 @@ public class Implementierung03 implements Liste
 	}
 
 	@Override
-
-	public Knoten insert(Knoten knoten, Element element)
-	{
+	public Knoten insert(Knoten knoten, Element element) {
+		Aufwand.counter++;
 		Knoten q;
 		Knoten durchlaufKnoten = head;
-		if(tail.getNachfolger() == head && knoten == null)
-		{
+		if (tail.getNachfolger() == head && knoten == null) {
 			q = new Knoten(null, tail, element);
 			head.setNachfolger(q);
 			tail.setNachfolger(q);
 			knoten = head;
 			laenge++;
-		}
-		else if(knoten != null)
-		{
-			while(durchlaufKnoten != tail)
-			{
-				if(durchlaufKnoten == knoten)
-				{
+		} else if (knoten != null) {
+			while (durchlaufKnoten != tail) {
+				if (durchlaufKnoten == knoten) {
 					q = new Knoten(null, knoten.getNachfolger(), element);
 					knoten.setNachfolger(q);
-					if(q.getNachfolger() == tail)
-					{
+					if (q.getNachfolger() == tail) {
 						tail.setNachfolger(q);
 					}
 					laenge++;
@@ -49,22 +41,18 @@ public class Implementierung03 implements Liste
 		return knoten;
 	}
 
-	public void insertFirstKnoten(Element element)
-	{
-		this.insert(null, element);
-	}
+//	public void insertFirstKnoten(Element element) {
+//		this.insert(null, element);
+//	}
 
 	@Override
-	public boolean delete(Knoten knoten)
-	{
+	public boolean delete(Knoten knoten) {
+		Aufwand.counter++;
 		boolean result = false;
 		Knoten durchlaufKnoten = head;
-		if(head.getNachfolger() != tail)
-		{
-			while(durchlaufKnoten != tail)
-			{
-				if(durchlaufKnoten == knoten)
-				{
+		if (head.getNachfolger() != tail) {
+			while (durchlaufKnoten != tail) {
+				if (durchlaufKnoten == knoten) {
 					Knoten q = knoten.getNachfolger();
 					knoten.setNachfolger(q.getNachfolger());
 					q.setElement(null);
@@ -80,34 +68,31 @@ public class Implementierung03 implements Liste
 	}
 
 	@Override
-	public Knoten find(Element element)
-	{
+	public Knoten find(Element element) {
+		Aufwand.counter++;
 		tail.setElement(element);
 		Knoten posVor;
 		Knoten pos = head;
-		do
-		{
+		do {
 			posVor = pos;
 			pos = pos.getNachfolger();
-		}
-		while(pos.getElement() != element);
+		} while (pos.getElement() != element);
 		tail.setElement(null);
 		return posVor;
 	}
 
 	@Override
-	public Element retrieve(Knoten knoten)
-	{
+	public Element retrieve(Knoten knoten) {
+		Aufwand.counter++;
 		return knoten.getNachfolger().getElement();
 	}
 
 	@Override
-	public boolean concat(Liste liste)
-	{
+	public boolean concat(Liste liste) {
+		Aufwand.counter++;
 		boolean result = false;
-		if(liste != null)
-		{
-			Implementierung03 tempListe = (Implementierung03) liste;
+		if (liste != null) {
+			EinfachVerkettet tempListe = (EinfachVerkettet) liste;
 			laenge += tempListe.size();
 			Knoten anfangTempListe = tempListe.getHead().getNachfolger();
 			Knoten endeTempListe = tempListe.getTail().getNachfolger();
@@ -121,18 +106,18 @@ public class Implementierung03 implements Liste
 	}
 
 	@Override
-	public int size()
-	{
+	public int size() {
+		Aufwand.counter++;
 		return laenge;
 	}
 
-	public Knoten getHead()
-	{
+	public Knoten getHead() {
+		Aufwand.counter++;
 		return head;
 	}
 
-	public Knoten getTail()
-	{
+	public Knoten getTail() {
+		Aufwand.counter++;
 		return tail;
 	}
 

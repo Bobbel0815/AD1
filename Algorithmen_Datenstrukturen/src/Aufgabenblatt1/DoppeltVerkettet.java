@@ -114,6 +114,11 @@ public class DoppeltVerkettet implements Liste {
 		}
 		return true;
 	}
+	
+	public Knoten getDummyEnd(){
+		Aufwand.counter++;
+		return dummyEnd;
+	}
 
 	@Override
 	public int size() {
