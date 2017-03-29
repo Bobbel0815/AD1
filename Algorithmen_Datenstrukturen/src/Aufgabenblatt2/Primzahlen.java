@@ -9,7 +9,6 @@ public class Primzahlen {
 		boolean a[] = new boolean[N];
 
 		for (int i = 0; i < N; i++) {
-			zaehler++;
 			a[i] = true;
 		}
 		for (int i = 2; i < N; i++) {
@@ -22,7 +21,7 @@ public class Primzahlen {
 		}
 		double zeit2 = System.nanoTime();
 		System.out.println("Langsame Zeit: " + (zeit2 - zeit1) / mikro + " ms");
-		System.out.println("Langsam: " + zaehler);
+		System.out.println("Langsame Operationen8: " + zaehler);
 		return a;
 	}
 
@@ -32,7 +31,6 @@ public class Primzahlen {
 		boolean a[] = new boolean[N];
 
 		for (int i = 0; i < N; i++) {
-			zaehler++;
 			if (i % 2 == 0) {
 				a[i] = false;
 			} else {
@@ -51,7 +49,7 @@ public class Primzahlen {
 		}
 		double zeit2 = System.nanoTime();
 		System.out.println("Verbesserte Zeit: " + (zeit2 - zeit1) / mikro + " ms");
-		System.out.println("Verbessert: " + zaehler);
+		System.out.println("Verbesserte Operationen: " + zaehler);
 		return a;
 	}
 
@@ -60,20 +58,45 @@ public class Primzahlen {
 		int zaehler = 0;
 		boolean[] a = new boolean[N];
 		for (int i = 0; i < N; i++) {
-			zaehler++;
 			a[i] = true;
 		}
-			for (int i = 2; i < Math.sqrt(N); i++) {
-				if (a[i] == true)
-					for (int j = 2; i * j < N; j++){
-						zaehler++;
-						a[i * j] = false;
-					}
+		for (int i = 2; i < Math.sqrt(N); i++) {
+			if (a[i] == true){
+				for (int j = 2; i * j < N; j++) {
+					zaehler++;
+					a[i * j] = false;
+				}
 			}
-		
+		}
+
 		double zeit2 = System.nanoTime();
 		System.out.println("Sieb Zeit: " + (zeit2 - zeit1) / mikro + " ms");
 		System.out.println("Sieb: " + zaehler);
+		return a;
+	}
+
+	public boolean primTest(int N) {
+		double zeit1 = System.nanoTime();
+		int zaehler = 0;
+		boolean a;
+
+		if (N % 2 == 0) {
+			zaehler++;
+			a = false;
+		} else {
+			a = true;
+			for (int i = 3; i < Math.sqrt(N); i +=2) {
+				zaehler++;
+				if (N % i == 0) {
+					a = false;
+					break;
+				}
+			}
+		}
+
+		double zeit2 = System.nanoTime();
+		System.out.println("Einzel-Test Zeit: " + (zeit2 - zeit1) / mikro + " ms");
+		System.out.println("Einzel-Test Operationen: " + zaehler);
 		return a;
 	}
 
@@ -86,13 +109,15 @@ public class Primzahlen {
 		boolean b[] = new boolean[N];
 
 		b = p.verbessert(N);
-		
+
 		boolean c[] = new boolean[N];
 
 		c = p.sieb(N);
-//		for(int i = 0; i< N; i++){
-//			System.out.println(i+ " " + c[i]);
-//		}
+
+		System.out.println(p.primTest(7));
+		// for(int i = 0; i< N; i++){
+		// System.out.println(i+ " " + c[i]);
+		// }
 
 	}
 }
