@@ -6,7 +6,7 @@ public class Primzahlen {
 	public boolean[] langsam(int N) {
 		int zaehler = 1;
 		double zeit1 = System.nanoTime();
-		boolean a[] = new boolean[N+1];
+		boolean a[] = new boolean[N + 1];
 
 		for (int i = 0; i <= N; i++) {
 			a[i] = true;
@@ -28,7 +28,7 @@ public class Primzahlen {
 	public boolean[] verbessert(int N) {
 		int zaehler = 1;
 		double zeit1 = System.nanoTime();
-		boolean a[] = new boolean[N+1];
+		boolean a[] = new boolean[N + 1];
 
 		for (int i = 0; i <= N; i++) {
 			if (i % 2 == 0) {
@@ -56,12 +56,12 @@ public class Primzahlen {
 	public boolean[] sieb(int N) {
 		double zeit1 = System.nanoTime();
 		int zaehler = 1;
-		boolean[] a = new boolean[N+1];
+		boolean[] a = new boolean[N + 1];
 		for (int i = 0; i <= N; i++) {
 			a[i] = true;
 		}
 		for (int i = 2; i < Math.sqrt(N); i++) {
-			if (a[i] == true){
+			if (a[i] == true) {
 				for (int j = 2; i * j <= N; j++) {
 					zaehler++;
 					a[i * j] = false;
@@ -85,7 +85,7 @@ public class Primzahlen {
 			a = false;
 		} else {
 			a = true;
-			for (long i = 3; i < Math.sqrt(N); i +=2) {
+			for (long i = 3; i < Math.sqrt(N); i += 2) {
 				zaehler++;
 				if (N % i == 0) {
 					a = false;
@@ -99,80 +99,77 @@ public class Primzahlen {
 		System.out.println("Einzel-Test Operationen: " + zaehler);
 		return a;
 	}
-	
 
-    /**
-     * Primzahl prüfen (Primzahltest)
-     */
-    public boolean isPrim(final long value) {
-    	double zeit1 = System.nanoTime();
-    	int zaehler = 1;
-        if (value <= 16) {
-        	zaehler++;
-        	double zeit2 = System.nanoTime();
-    		System.out.println("IsPrim Zeit: " + (zeit2 - zeit1) / mikro + " ms");
-    		System.out.println("IsPrim Operationen: " + zaehler);
-            return (value == 2 || value == 3 || value == 5 || value == 7 || value == 11 || value == 13);
-        }
-        if (value % 2 == 0 || value % 3 == 0 || value % 5 == 0 || value % 7 == 0) {
-        	zaehler++;
-        	double zeit2 = System.nanoTime();
-    		System.out.println("IsPrim Zeit: " + (zeit2 - zeit1) / mikro + " ms");
-    		System.out.println("IsPrim Operationen: " + zaehler);
-            return false;
-        }
-        for (long i = 10; i * i <= value; i += 10) {
-        	zaehler++;
-            if (value % (i+1) == 0) {  // 11, 21, 31, 41, 51, ...
-            	double zeit2 = System.nanoTime();
-        		System.out.println("IsPrim Zeit: " + (zeit2 - zeit1) / mikro + " ms");
-        		System.out.println("IsPrim Operationen: " + zaehler);
-                return false;
-            }
-            if (value % (i+3) == 0) {  // 13, 23, 33, 43, 53, ...
-            	double zeit2 = System.nanoTime();
-        		System.out.println("IsPrim Zeit: " + (zeit2 - zeit1) / mikro + " ms");
-        		System.out.println("IsPrim Operationen: " + zaehler);
-                return false;
-            }
-            if (value % (i+7) == 0) {  // 17, 27, 37, 47, 57, ...
-            	double zeit2 = System.nanoTime();
-        		System.out.println("IsPrim Zeit: " + (zeit2 - zeit1) / mikro + " ms");
-        		System.out.println("IsPrim Operationen: " + zaehler);
-                return false;
-            }
-            if (value % (i+9) == 0) {  // 19, 29, 39, 49, 59, ...
-            	double zeit2 = System.nanoTime();
-        		System.out.println("IsPrim Zeit: " + (zeit2 - zeit1) / mikro + " ms");
-        		System.out.println("IsPrim Operationen: " + zaehler);
-                return false;
-            }
-        }
-        double zeit2 = System.nanoTime();
-        System.out.println("IsPrim Zeit: " + (zeit2 - zeit1) / mikro + " ms");
+	/**
+	 * Primzahl prüfen (Primzahltest)
+	 */
+	public boolean isPrim(final long value) {
+		double zeit1 = System.nanoTime();
+		int zaehler = 1;
+		if (value <= 16) {
+			zaehler++;
+			double zeit2 = System.nanoTime();
+			System.out.println("IsPrim Zeit: " + (zeit2 - zeit1) / mikro + " ms");
+			System.out.println("IsPrim Operationen: " + zaehler);
+			return (value == 2 || value == 3 || value == 5 || value == 7 || value == 11 || value == 13);
+		}
+		if (value % 2 == 0 || value % 3 == 0 || value % 5 == 0 || value % 7 == 0) {
+			zaehler++;
+			double zeit2 = System.nanoTime();
+			System.out.println("IsPrim Zeit: " + (zeit2 - zeit1) / mikro + " ms");
+			System.out.println("IsPrim Operationen: " + zaehler);
+			return false;
+		}
+		for (long i = 10; i * i <= value; i += 10) {
+			zaehler++;
+			if (value % (i + 1) == 0) { // 11, 21, 31, 41, 51, ...
+				double zeit2 = System.nanoTime();
+				System.out.println("IsPrim Zeit: " + (zeit2 - zeit1) / mikro + " ms");
+				System.out.println("IsPrim Operationen: " + zaehler);
+				return false;
+			}
+			if (value % (i + 3) == 0) { // 13, 23, 33, 43, 53, ...
+				double zeit2 = System.nanoTime();
+				System.out.println("IsPrim Zeit: " + (zeit2 - zeit1) / mikro + " ms");
+				System.out.println("IsPrim Operationen: " + zaehler);
+				return false;
+			}
+			if (value % (i + 7) == 0) { // 17, 27, 37, 47, 57, ...
+				double zeit2 = System.nanoTime();
+				System.out.println("IsPrim Zeit: " + (zeit2 - zeit1) / mikro + " ms");
+				System.out.println("IsPrim Operationen: " + zaehler);
+				return false;
+			}
+			if (value % (i + 9) == 0) { // 19, 29, 39, 49, 59, ...
+				double zeit2 = System.nanoTime();
+				System.out.println("IsPrim Zeit: " + (zeit2 - zeit1) / mikro + " ms");
+				System.out.println("IsPrim Operationen: " + zaehler);
+				return false;
+			}
+		}
+		double zeit2 = System.nanoTime();
+		System.out.println("IsPrim Zeit: " + (zeit2 - zeit1) / mikro + " ms");
 		System.out.println("IsPrim Operationen: " + zaehler);
-        return true;
-    }
+		return true;
+	}
 
 	public static void main(String[] args) {
-		int N = 12;
+		int N = 100000000;
 		Primzahlen p = new Primzahlen();
-		boolean a[] = new boolean[N+1];
-		a = p.langsam(N);
+		boolean a[] = new boolean[N + 1];
+		// a = p.langsam(N);
 
-		boolean b[] = new boolean[N+1];
+		boolean b[] = new boolean[N + 1];
 
 		b = p.verbessert(N);
 
-		boolean c[] = new boolean[N+1];
+		boolean c[] = new boolean[N + 1];
 
 		c = p.sieb(N);
 
-long primsuche = 554688278;
+		long primsuche = 10;
 		System.out.println(p.primTest(primsuche));
 		System.out.println(p.isPrim(primsuche));
-
-
 
 	}
 }
