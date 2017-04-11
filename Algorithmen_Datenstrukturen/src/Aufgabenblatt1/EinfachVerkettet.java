@@ -18,18 +18,18 @@ public class EinfachVerkettet implements Liste {
 		Aufwandsanalyse.counter++;
 		Knoten q;
 		Knoten durchlaufKnoten = head;
-		if (tail.getNachfolger() == head && knoten == null) {
-			q = new Knoten(null, tail, element);
-			head.setNachfolger(q);
+		if (tail.getNachfolger() == head && knoten == null) { //Leere Liste
+			q = new Knoten(null, tail, element); //neuer Knoten mit "element"
+			head.setNachfolger(q);		
 			tail.setNachfolger(q);
-			knoten = head;
+			knoten = head; //eingefügter neuer Knoten
 			laenge++;
-		} else if (knoten != null) {
-			while (durchlaufKnoten != tail) {
-				if (durchlaufKnoten == knoten) {
-					q = new Knoten(null, knoten.getNachfolger(), element);
-					knoten.setNachfolger(q);
-					if (q.getNachfolger() == tail) {
+		} else if (knoten != null) {	//Knotenposition wo eingefügt wird
+			while (durchlaufKnoten != tail) { //Durchlauf bis maximal "tail"
+				if (durchlaufKnoten == knoten) { //Knoten gefunden
+					q = new Knoten(null, knoten.getNachfolger(), element);	//neuer Knoten nach "knoten"
+					knoten.setNachfolger(q);	//nach "knoten" wird der neue Knoten gebunden
+					if (q.getNachfolger() == tail) {//Wenn neuer Knoten am Ende -> knoten <-> tail|
 						tail.setNachfolger(q);
 					}
 					laenge++;
@@ -41,19 +41,16 @@ public class EinfachVerkettet implements Liste {
 		return knoten;
 	}
 
-//	public void insertFirstKnoten(Element element) {
-//		this.insert(null, element);
-//	}
 
 	@Override
 	public boolean delete(Knoten knoten) {
 		Aufwandsanalyse.counter++;
 		boolean result = false;
 		Knoten durchlaufKnoten = head;
-		if (head.getNachfolger() != tail) {
-			while (durchlaufKnoten != tail) {
-				if (durchlaufKnoten == knoten) {
-					Knoten q = knoten.getNachfolger();
+		if (head.getNachfolger() != tail) { //Wenn Liste nicht leer
+			while (durchlaufKnoten != tail) { //Ende nicht erreicht
+				if (durchlaufKnoten == knoten) { //Position gefunden
+					Knoten q = knoten.getNachfolger(); 
 					knoten.setNachfolger(q.getNachfolger());
 					q.setElement(null);
 					q.setNachfolger(null);
@@ -70,14 +67,14 @@ public class EinfachVerkettet implements Liste {
 	@Override
 	public Knoten find(Element element) {
 		Aufwandsanalyse.counter++;
-		tail.setElement(element);
+		tail.setElement(element); //Stopper "element" im tail
 		Knoten posVor;
-		Knoten pos = head;
+		Knoten pos = head; //Start position beim "head"
 		do {
 			posVor = pos;
 			pos = pos.getNachfolger();
-		} while (pos.getElement() != element);
-		tail.setElement(null);
+		} while (pos.getElement() != element); //Durchlauf bis "element" gefunden ist
+		tail.setElement(null); //Stopper "tail" wird geleert
 		return posVor;
 	}
 
@@ -94,12 +91,12 @@ public class EinfachVerkettet implements Liste {
 		if (liste != null) {
 			EinfachVerkettet tempListe = (EinfachVerkettet) liste;
 			laenge += tempListe.size();
-			Knoten anfangTempListe = tempListe.getHead().getNachfolger();
-			Knoten endeTempListe = tempListe.getTail().getNachfolger();
-			Knoten endeListe = tail.getNachfolger();
-			endeListe.setNachfolger(anfangTempListe);
-			endeTempListe.setNachfolger(tail);
-			tail.setNachfolger(endeTempListe);
+			Knoten anfangTempListe = tempListe.getHead().getNachfolger(); //Anfangsknoten 2.Liste
+			Knoten endeTempListe = tempListe.getTail().getNachfolger(); //Endknoten 2.Liste
+			Knoten endeListe = tail.getNachfolger(); //Endknoten 1.Liste
+			endeListe.setNachfolger(anfangTempListe); //Endknoten 1.Liste -> Anfangsknoten 2.Liste
+			endeTempListe.setNachfolger(tail); //Endknoten 2.Liste -> "tail" 1.Liste
+			tail.setNachfolger(endeTempListe); //Endknoten 2.Liste <- "tail" 1.Liste
 			result = true;
 		}
 		return result;
